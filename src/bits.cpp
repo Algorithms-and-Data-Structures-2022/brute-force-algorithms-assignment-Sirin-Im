@@ -6,12 +6,17 @@ namespace assignment {
 
   bool is_bit_set(int mask, int pos) {
     assert(mask >= 0 && pos >= 0 && pos < 30);
+    //сгенерировать маску(<<)
+    //применить(&)
+    if((mask & (1 << pos)) != 0){
+      return true;
+    }
     return false;
   }
 
   int set_bit(int mask, int pos) {
     assert(mask >= 0 && pos >= 0 && pos < 30);
-    return 0;
+    return mask | (1 << pos);
   }
 
   std::vector<int> mask2indices(const std::vector<int>& elems, int mask) {

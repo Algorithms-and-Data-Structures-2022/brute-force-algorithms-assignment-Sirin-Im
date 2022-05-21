@@ -19,6 +19,25 @@ namespace assignment {
     // 3. Подсчет суммы текущего подмножества, сохранение индексов подмножества с целевой суммой в результат
     // Tips: можно пропустить итерацию, если сумма текущего подмножества стала больше целевой суммы
 
+    for (int mask = 0; mask < num_subsets; mask++) {
+      for (int pos = 0; pos < num_elems; pos++) {
+        std::vector<int> subset = mask2indices(set, mask);
+
+        int sum = 0;
+        for (int index : subset) {
+          sum += set[index];
+        }
+
+        if (sum == target_sum) {
+          indices.push_back(subset);
+        }
+
+        if (sum > target_sum) {
+          break ;
+        }
+      }
+    }
+
     return indices;
   }
 
